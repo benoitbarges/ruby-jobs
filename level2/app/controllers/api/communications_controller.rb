@@ -11,11 +11,10 @@ class Api::CommunicationsController < ApplicationController
   end
 
   def index
-    render json: Communication.all.to_json, status: :ok
+    render json: Communication.includes(:practitioner).to_json, status: :ok
   end
 
   def communication_params
     params.require(:communication).permit(:first_name, :last_name, :sent_at)
   end
-
 end
