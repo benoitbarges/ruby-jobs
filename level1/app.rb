@@ -4,9 +4,9 @@ require 'date'
 # votre code
 class CompteRendu
   def self.results
-    results = { 'total' => [] }
+    results = { 'totals' => [] }
     group_by_date.each do |date, coms|
-      results['total'] << { 'sent_on' => date, 'total' => calculate_price(coms) }
+      results['totals'] << { 'sent_on' => date, 'total' => calculate_price(coms) }
     end
     results
   end
