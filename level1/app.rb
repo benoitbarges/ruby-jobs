@@ -1,14 +1,12 @@
 require 'json'
 require 'date'
 
-
 # votre code
-
 class CompteRendu
   def self.results
     results = { 'total' => [] }
     group_by_date.each do |date, coms|
-      results['total'] << { "sent_on" => date, "total" => calculate_price(coms) }
+      results['total'] << { 'sent_on' => date, 'total' => calculate_price(coms) }
     end
     results
   end
@@ -47,9 +45,6 @@ class CompteRendu
     coms.each { |com| sum += 0.07 * (com['pages_number'] - 1) }
     sum
   end
-
 end
 
-coms = [{"id"=>1, "practitioner_id"=>1, "pages_number"=>1, "color"=>true, "sent_at"=>"2019-03-01 10:00:00"}, {"id"=>2, "practitioner_id"=>1, "pages_number"=>2, "color"=>false, "sent_at"=>"2019-03-01 18:00:00"}, {"id"=>3, "practitioner_id"=>1, "pages_number"=>8, "color"=>false, "sent_at"=>"2019-03-01 12:00:00"}]
 p CompteRendu.results
-
